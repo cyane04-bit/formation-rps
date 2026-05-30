@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comprendre et prévenir les RPS – PsyCyaNe</title>
+  <meta name="description" content="Formation professionnelle : Comprendre et prévenir les risques psychosociaux. Langage commun et outils concrets. PsyCyaNe – Nadège CORDENTE." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Variables PsyCyaNe ───────────────────────────── */
+    :root {
+      --bleu-logo:   #2A4D6D;
+      --navy:        #0F2540;
+      --jaune-cta:   #FFD100;
+      --jaune-pale:  #FEF3C7;
+      --jaune-doux:  #FFE566;
+      --bleu-clair:  #D6E4F0;
+      --bleu-moyen:  #3D6890;
+      --gris:        #3A3A3A;
+      --texte:       #2B2B2B;
+      --blanc:       #FFFFFF;
+      --radius:      14px;
+      --shadow:      0 4px 24px rgba(15,37,64,.10);
+      --shadow-md:   0 8px 40px rgba(15,37,64,.15);
+    }
+
+    /* ── Reset & base ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 17px; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--texte);
+      background: #F7F9FC;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      line-height: 1.2;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    img { max-width: 100%; display: block; }
+
+    /* ── Skip link accessibilité ──────────────────────── */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 1rem;
+      background: var(--jaune-cta);
+      color: var(--navy);
+      padding: .5rem 1rem;
+      border-radius: 0 0 8px 8px;
+      font-weight: 500;
+      z-index: 9999;
+      transition: top .2s;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ── Utility ──────────────────────────────────────── */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--jaune-pale);
+      color: var(--navy);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .3rem .9rem;
+      border-radius: 100px;
+      border: 1px solid var(--jaune-doux);
+    }
+
+    .section-title {
+      font-size: clamp(1.9rem, 4vw, 2.6rem);
+      color: var(--navy);
+      margin-bottom: .4rem;
+    }
+
+    .section-lead {
+      color: var(--bleu-moyen);
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .card {
+      background: var(--blanc);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2rem;
+    }
+
+    /* ── HEADER ───────────────────────────────────────── */
+    header {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--bleu-logo) 60%, var(--bleu-moyen) 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 3.5rem 0 4rem;
+    }
+
+    /* Motif décoratif */
+    header::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 420px; height: 420px;
+      border-radius: 50%;
+      background: rgba(255,209,0,.08);
+      pointer-events: none;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: -60px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: rgba(214,228,240,.07);
+      pointer-events: none;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-logo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: contain;
+      background: var(--blanc);
+      padding: 8px;
+      box-shadow: 0 0 0 4px rgba(255,209,0,.35);
+      flex-shrink: 0;
+    }
+
+    /* Fallback si logo absent */
+    .header-logo-placeholder {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: var(--blanc);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 4px rgba(255,209,0,.35);
+      flex-shrink: 0;
+    }
+    .header-logo-placeholder span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .header-text { color: var(--blanc); }
+
+    .header-text .badge {
+      background: rgba(255,209,0,.2);
+      color: var(--jaune-cta);
+      border-color: rgba(255,209,0,.3);
+      margin-bottom: 1rem;
+    }
+
+    .header-text h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      color: var(--blanc);
+      margin-bottom: .5rem;
+    }
+
+    .header-text .accroche {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-style: italic;
+      color: var(--jaune-doux);
+      margin-bottom: 1.5rem;
+    }
+
+    .header-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .8rem;
+    }
+
+    .meta-chip {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.2);
+      color: var(--blanc);
+      font-size: .88rem;
+      padding: .4rem .9rem;
+      border-radius: 100px;
+      backdrop-filter: blur(4px);
+    }
+
+    .meta-chip svg { flex-shrink: 0; }
+
+    /* ── BANNIÈRE THÉMATIQUE ──────────────────────────── */
+    .banner {
+      width: 100%;
+      height: 220px;
+      background: linear-gradient(120deg, var(--bleu-clair) 0%, var(--jaune-pale) 50%, var(--bleu-clair) 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Illustration SVG inline — thème RPS */
+    .banner svg.banner-art {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .banner-caption {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: var(--navy);
+    }
+
+    .banner-caption p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 3vw, 1.6rem);
+      font-style: italic;
+      font-weight: 600;
+      color: var(--bleu-logo);
+      max-width: 600px;
+      padding: .8rem 1.5rem;
+      background: rgba(255,255,255,.7);
+      border-radius: var(--radius);
+      backdrop-filter: blur(6px);
+      border-left: 4px solid var(--jaune-cta);
+    }
+
+    /* ── CITATION ─────────────────────────────────────── */
+    .section-citation {
+      padding: 4rem 0;
+      background: var(--blanc);
+    }
+
+    .citation-card {
+      background: linear-gradient(135deg, var(--bleu-logo), var(--navy));
+      border-radius: var(--radius);
+      padding: 2.5rem 3rem;
+      position: relative;
+      overflow: hidden;
+      color: var(--blanc);
+    }
+
+    .citation-card::before {
+      content: '\201C';
+      position: absolute;
+      top: -20px; left: 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 10rem;
+      color: rgba(255,209,0,.15);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .citation-card blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      font-style: italic;
+      color: var(--blanc);
+      position: relative;
+      z-index: 1;
+      margin-bottom: 1.2rem;
+    }
+
+    .citation-card .citation-author {
+      font-size: .9rem;
+      color: var(--jaune-doux);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── PROGRAMME / ACCORDÉON ────────────────────────── */
+    .section-programme {
+      padding: 4rem 0;
+    }
+
+    .accordeon { display: flex; flex-direction: column; gap: .75rem; }
+
+    .accordeon-item {
+      background: var(--blanc);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid transparent;
+      transition: border-color .2s;
+    }
+
+    .accordeon-item:focus-within { border-color: var(--jaune-cta); }
+
+    .accordeon-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.2rem 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--navy);
+      transition: background .2s;
+    }
+
+    .accordeon-btn:hover { background: var(--bleu-clair); }
+
+    .accordeon-btn .module-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--jaune-cta);
+      color: var(--navy);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .8rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .accordeon-btn .btn-left {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+    }
+
+    .accordeon-icon {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+      transition: transform .3s;
+      color: var(--bleu-moyen);
+    }
+
+    .accordeon-item.open .accordeon-icon { transform: rotate(180deg); }
+
+    .accordeon-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease, padding .25s;
+    }
+
+    .accordeon-item.open .accordeon-body { max-height: 600px; }
+
+    .accordeon-content {
+      padding: 0 1.5rem 1.5rem;
+      border-top: 1px solid var(--bleu-clair);
+      padding-top: 1.2rem;
+    }
+
+    .accordeon-content ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+
+    .accordeon-content ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: .6rem;
+      font-size: .96rem;
+    }
+
+    .accordeon-content ul li::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--jaune-cta);
+      flex-shrink: 0;
+      margin-top: .55rem;
+    }
+
+    /* ── TÉLÉCHARGEMENTS ──────────────────────────────── */
+    .section-downloads {
+      padding: 3rem 0;
+      background: var(--blanc);
+    }
+
+    .downloads-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      background: var(--navy);
+      color: var(--blanc);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .95rem;
+      font-weight: 500;
+      padding: .9rem 1.6rem;
+      border-radius: var(--radius);
+      transition: background .2s, transform .15s, box-shadow .2s;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-download:hover {
+      background: var(--bleu-logo);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-download:focus-visible {
+      outline: 3px solid var(--jaune-cta);
+      outline-offset: 3px;
+    }
+
+    .btn-download svg { flex-shrink: 0; }
+
+    /* ── CARTE ────────────────────────────────────────── */
+    .section-lieu {
+      padding: 4rem 0;
+    }
+
+    .lieu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .lieu-info { display: flex; flex-direction: column; gap: 1rem; }
+
+    .lieu-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: .9rem;
+      background: var(--blanc);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.2rem 1.4rem;
+    }
+
+    .lieu-detail-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: var(--bleu-clair);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--bleu-logo);
+    }
+
+    .lieu-detail-text strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      color: var(--navy);
+      margin-bottom: .15rem;
+    }
+
+    .lieu-detail-text span { font-size: .92rem; color: var(--gris); }
+
+    .map-wrapper {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 3px solid var(--blanc);
+    }
+
+    .map-wrapper iframe {
+      display: block;
+      width: 100%;
+      height: 300px;
+      border: none;
+    }
+
+    /* ── CONTACT ──────────────────────────────────────── */
+    .section-contact {
+      padding: 4rem 0;
+      background: var(--blanc);
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--bleu-logo), var(--bleu-moyen));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--blanc);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .contact-info { flex: 1; min-width: 200px; }
+
+    .contact-info h3 {
+      font-size: 1.4rem;
+      color: var(--navy);
+      margin-bottom: .2rem;
+    }
+
+    .contact-info .contact-role {
+      color: var(--bleu-moyen);
+      font-size: .9rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .7rem;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--bleu-clair);
+      color: var(--navy);
+      font-size: .88rem;
+      font-weight: 500;
+      padding: .45rem 1rem;
+      border-radius: 100px;
+      transition: background .2s;
+    }
+
+    .contact-link:hover { background: var(--jaune-pale); }
+
+    /* ── FOOTER ───────────────────────────────────────── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,.75);
+      padding: 2.5rem 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+    }
+
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: var(--blanc);
+      font-weight: 600;
+    }
+
+    .footer-brand span { color: var(--jaune-cta); }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      align-items: center;
+      font-size: .85rem;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,.7);
+      transition: color .2s;
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+    }
+
+    .footer-links a:hover { color: var(--jaune-cta); }
+
+    .footer-copy {
+      width: 100%;
+      text-align: center;
+      font-size: .78rem;
+      color: rgba(255,255,255,.4);
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+
+    /* Qualiopi badge */
+    .qualiopi-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(255,209,0,.15);
+      border: 1px solid rgba(255,209,0,.3);
+      color: var(--jaune-cta);
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: .4rem .9rem;
+      border-radius: 100px;
+    }
+
+    /* ── Sections spacing ─────────────────────────────── */
+    section { padding: 4rem 0; }
+    section:nth-child(even) { background: var(--blanc); }
+
+    /* ── RESPONSIVE ───────────────────────────────────── */
+    @media (max-width: 720px) {
+      .header-inner { flex-direction: column; text-align: center; }
+      .header-meta { justify-content: center; }
+      .lieu-grid { grid-template-columns: 1fr; }
+      .contact-card { flex-direction: column; text-align: center; }
+      .contact-links { justify-content: center; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .citation-card { padding: 1.8rem; }
+    }
+
+    /* ── Animations légères ───────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-in {
+      animation: fadeUp .6s ease both;
+    }
+
+    .animate-in:nth-child(2) { animation-delay: .1s; }
+    .animate-in:nth-child(3) { animation-delay: .2s; }
+    .animate-in:nth-child(4) { animation-delay: .3s; }
+  </style>
+</head>
+
+<body>
+
+  <a class="skip-link" href="#main">Aller au contenu principal</a>
+
+  <!-- ══════════════════════════════════════════════════
+       HEADER
+  ═══════════════════════════════════════════════════ -->
+  <header role="banner">
+    <div class="container">
+      <div class="header-inner">
+        <!-- Logo -->
+        <img src="logo.png"
+             alt="Logo PsyCyaNe"
+             class="header-logo"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+        <div class="header-logo-placeholder" style="display:none;" aria-hidden="true">
+          <span>Psy</span>
+        </div>
+
+        <div class="header-text">
+          <span class="badge">Formation professionnelle · Journée du 18 juin 2026</span>
+          <h1>Comprendre et prévenir les RPS</h1>
+          <p class="accroche">Langage commun et outils concrets</p>
+          <div class="header-meta">
+            <span class="meta-chip">
+              <!-- Icône calendrier -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Jeudi 18 juin 2026
+            </span>
+            <span class="meta-chip">
+              <!-- Icône lieu -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+              Le Bouscat (33)
+            </span>
+            <span class="meta-chip">
+              <!-- Icône organisme -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21V5a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v16"/><path d="M1 21h22"/><path d="M9 21V9h6v12"/></svg>
+              PsyCyaNe
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ══════════════════════════════════════════════════
+         BANNIÈRE THÉMATIQUE
+    ═══════════════════════════════════════════════════ -->
+    <div class="banner" role="img" aria-label="Illustration thématique : bien-être et prévention au travail">
+      <!-- Illustration SVG inline — palette PsyCyaNe -->
+      <svg class="banner-art" viewBox="0 0 1200 220" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <!-- Fond dégradé -->
+        <defs>
+          <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#D6E4F0"/>
+            <stop offset="55%" stop-color="#FEF3C7"/>
+            <stop offset="100%" stop-color="#D6E4F0"/>
+          </linearGradient>
+          <linearGradient id="wave1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#2A4D6D" stop-opacity=".08"/>
+            <stop offset="100%" stop-color="#2A4D6D" stop-opacity=".03"/>
+          </linearGradient>
+        </defs>
+        <rect width="1200" height="220" fill="url(#bg)"/>
+
+        <!-- Vagues décoratives -->
+        <path d="M0 120 Q150 80 300 120 Q450 160 600 120 Q750 80 900 120 Q1050 160 1200 120 L1200 220 L0 220Z" fill="url(#wave1)"/>
+        <path d="M0 150 Q200 110 400 150 Q600 190 800 150 Q1000 110 1200 150 L1200 220 L0 220Z" fill="#2A4D6D" fill-opacity=".04"/>
+
+        <!-- Cercles décoratifs -->
+        <circle cx="100" cy="60" r="40" fill="#FFD100" fill-opacity=".15"/>
+        <circle cx="1100" cy="160" r="55" fill="#3D6890" fill-opacity=".10"/>
+        <circle cx="600" cy="30" r="25" fill="#FFE566" fill-opacity=".3"/>
+
+        <!-- Pictogrammes minimalistes : silhouettes humaines connectées -->
+        <!-- Personne 1 -->
+        <g transform="translate(460,60)" fill="#2A4D6D" fill-opacity=".22">
+          <circle cx="0" cy="0" r="18"/>
+          <rect x="-14" y="22" width="28" height="36" rx="8"/>
+        </g>
+        <!-- Personne 2 -->
+        <g transform="translate(530,55)" fill="#3D6890" fill-opacity=".22">
+          <circle cx="0" cy="0" r="18"/>
+          <rect x="-14" y="22" width="28" height="36" rx="8"/>
+        </g>
+        <!-- Personne 3 -->
+        <g transform="translate(600,60)" fill="#2A4D6D" fill-opacity=".22">
+          <circle cx="0" cy="0" r="18"/>
+          <rect x="-14" y="22" width="28" height="36" rx="8"/>
+        </g>
+        <!-- Liens entre les personnes -->
+        <line x1="476" y1="90" x2="516" y2="90" stroke="#FFD100" stroke-width="3" stroke-opacity=".5"/>
+        <line x1="546" y1="90" x2="586" y2="90" stroke="#FFD100" stroke-width="3" stroke-opacity=".5"/>
+
+        <!-- Bouclier (protection / prévention) -->
+        <g transform="translate(680,40)" fill="none" stroke="#2A4D6D" stroke-width="3" stroke-opacity=".2">
+          <path d="M0 0 Q30-10 60 0 L60 50 Q30 70 0 50Z"/>
+          <polyline points="15,30 28,43 55,18" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+      </svg>
+
+      <div class="banner-caption">
+        <p>« La prévention des RPS à la portée de toutes et tous »</p>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════
+         CITATION / MOT DE LA FORMATRICE
+    ═══════════════════════════════════════════════════ -->
+    <section class="section-citation" aria-labelledby="titre-citation">
+      <div class="container">
+        <div class="citation-card card animate-in">
+          <blockquote id="titre-citation">
+            « Comprendre les risques psychosociaux, c'est d'abord se donner un langage commun — un socle partagé à partir duquel chaque professionnel peut agir, à son niveau, avec discernement et avec les bons outils. »
+          </blockquote>
+          <p class="citation-author">— Nadège CORDENTE, Psychologue du travail &amp; Formatrice · PsyCyaNe</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         PROGRAMME — ACCORDÉON
+    ═══════════════════════════════════════════════════ -->
+    <section class="section-programme" aria-labelledby="titre-programme">
+      <div class="container">
+        <p class="badge" style="margin-bottom:.8rem;">Programme</p>
+        <h2 class="section-title" id="titre-programme">Contenu de la formation</h2>
+        <p class="section-lead">Cliquez sur chaque module pour découvrir son contenu détaillé.</p>
+
+        <div class="accordeon" role="list">
+
+          <!-- MODULE 1 -->
+          <div class="accordeon-item animate-in" role="listitem">
+            <button class="accordeon-btn"
+                    aria-expanded="false"
+                    aria-controls="module1-body"
+                    id="module1-btn"
+                    onclick="toggleAccordeon(this)">
+              <span class="btn-left">
+                <span class="module-num" aria-hidden="true">1</span>
+                Introduction et langage commun des RPS
+                <span style="font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:400;color:var(--bleu-moyen);margin-left:.4rem;">(1h)</span>
+              </span>
+              <svg class="accordeon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordeon-body" id="module1-body" role="region" aria-labelledby="module1-btn">
+              <div class="accordeon-content">
+                <ul>
+                  <li>Quiz interactif et cartographie mentale pour identifier les attentes</li>
+                  <li>Capsule vidéo et glossaire interactif sur les termes clés des RPS</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- MODULE 2 -->
+          <div class="accordeon-item animate-in" role="listitem">
+            <button class="accordeon-btn"
+                    aria-expanded="false"
+                    aria-controls="module2-body"
+                    id="module2-btn"
+                    onclick="toggleAccordeon(this)">
+              <span class="btn-left">
+                <span class="module-num" aria-hidden="true">2</span>
+                Repérer les signaux faibles
+                <span style="font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:400;color:var(--bleu-moyen);margin-left:.4rem;">(45 min)</span>
+              </span>
+              <svg class="accordeon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordeon-body" id="module2-body" role="region" aria-labelledby="module2-btn">
+              <div class="accordeon-content">
+                <ul>
+                  <li>Études de cas en sous-groupes pour analyser des situations réelles</li>
+                  <li>Restitution plénière et identification des signaux faibles</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- MODULE 3 -->
+          <div class="accordeon-item animate-in" role="listitem">
+            <button class="accordeon-btn"
+                    aria-expanded="false"
+                    aria-controls="module3-body"
+                    id="module3-btn"
+                    onclick="toggleAccordeon(this)">
+              <span class="btn-left">
+                <span class="module-num" aria-hidden="true">3</span>
+                Agir en tant que manager
+                <span style="font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:400;color:var(--bleu-moyen);margin-left:.4rem;">(45 min)</span>
+              </span>
+              <svg class="accordeon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordeon-body" id="module3-body" role="region" aria-labelledby="module3-btn">
+              <div class="accordeon-content">
+                <ul>
+                  <li>Fiches réflexes pour créer des réponses adaptées</li>
+                  <li>Jeux de rôle pour simuler des dialogues manager/collaborateur</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- MODULE 4 -->
+          <div class="accordeon-item animate-in" role="listitem">
+            <button class="accordeon-btn"
+                    aria-expanded="false"
+                    aria-controls="module4-body"
+                    id="module4-btn"
+                    onclick="toggleAccordeon(this)">
+              <span class="btn-left">
+                <span class="module-num" aria-hidden="true">4</span>
+                Plan d'action collectif
+                <span style="font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:400;color:var(--bleu-moyen);margin-left:.4rem;">(30 min)</span>
+              </span>
+              <svg class="accordeon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordeon-body" id="module4-body" role="region" aria-labelledby="module4-btn">
+              <div class="accordeon-content">
+                <ul>
+                  <li>Atelier collaboratif pour synthétiser les bonnes pratiques</li>
+                  <li>Vote sur les 3 actions prioritaires à mettre en œuvre</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- MODULE 5 -->
+          <div class="accordeon-item animate-in" role="listitem">
+            <button class="accordeon-btn"
+                    aria-expanded="false"
+                    aria-controls="module5-body"
+                    id="module5-btn"
+                    onclick="toggleAccordeon(this)">
+              <span class="btn-left">
+                <span class="module-num" aria-hidden="true">5</span>
+                Clôture et évaluation
+                <span style="font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:400;color:var(--bleu-moyen);margin-left:.4rem;">(15 min)</span>
+              </span>
+              <svg class="accordeon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordeon-body" id="module5-body" role="region" aria-labelledby="module5-btn">
+              <div class="accordeon-content">
+                <ul>
+                  <li>Quiz final pour évaluer les acquis</li>
+                  <li>Engagement individuel sur une action concrète</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /accordeon -->
+
+        <!-- Bouton téléchargement programme -->
+        <div style="margin-top:2rem;">
+          <a href="programme.pdf"
+             class="btn-download"
+             download
+             aria-label="Télécharger le programme complet en PDF">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Télécharger le programme complet (PDF)
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         TÉLÉCHARGEMENTS
+    ═══════════════════════════════════════════════════ -->
+    <section class="section-downloads" aria-labelledby="titre-downloads">
+      <div class="container">
+        <p class="badge" style="margin-bottom:.8rem;">Documents</p>
+        <h2 class="section-title" id="titre-downloads">Ressources à télécharger</h2>
+        <p class="section-lead">Tous les documents de la formation disponibles en accès libre.</p>
+
+        <div class="downloads-grid">
+          <a href="programme.pdf"
+             class="btn-download"
+             download
+             aria-label="Télécharger le programme de formation en PDF">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Programme de formation
+          </a>
+
+          <a href="livret-stagiaire.pdf"
+             class="btn-download"
+             download
+             aria-label="Télécharger le livret stagiaire en PDF"
+             style="background: var(--bleu-moyen);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            Livret stagiaire
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         LIEU & CARTE
+    ═══════════════════════════════════════════════════ -->
+    <section class="section-lieu" aria-labelledby="titre-lieu">
+      <div class="container">
+        <p class="badge" style="margin-bottom:.8rem;">Lieu</p>
+        <h2 class="section-title" id="titre-lieu">Où se déroule la formation ?</h2>
+        <p class="section-lead">Une salle de formation au cœur du Bouscat, facilement accessible.</p>
+
+        <div class="lieu-grid">
+          <div class="lieu-info">
+
+            <div class="lieu-detail">
+              <div class="lieu-detail-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              </div>
+              <div class="lieu-detail-text">
+                <strong>L'Étape – Le Patio</strong>
+                <span>212 avenue de Tivoli<br/>33110 Le Bouscat</span>
+              </div>
+            </div>
+
+            <div class="lieu-detail">
+              <div class="lieu-detail-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+              <div class="lieu-detail-text">
+                <strong>Date</strong>
+                <span>Jeudi 18 juin 2026</span>
+              </div>
+            </div>
+
+            <div class="lieu-detail">
+              <div class="lieu-detail-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div class="lieu-detail-text">
+                <strong>Format</strong>
+                <span>Distanciel — demi-journée</span>
+              </div>
+            </div>
+
+          </div><!-- /lieu-info -->
+
+          <!-- Google Maps embed -->
+          <div class="map-wrapper">
+            <iframe
+              title="Carte : L'Étape – Le Patio, 212 avenue de Tivoli, 33110 Le Bouscat"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2827.4!2d-0.5887!3d44.8690!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5527a6e3b6c6c7%3A0x0!2s212+Avenue+de+Tivoli%2C+33110+Le+Bouscat!5e0!3m2!1sfr!2sfr!4v1"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         CONTACT
+    ═══════════════════════════════════════════════════ -->
+    <section class="section-contact" aria-labelledby="titre-contact">
+      <div class="container">
+        <p class="badge" style="margin-bottom:.8rem;">Contact</p>
+        <h2 class="section-title" id="titre-contact">Votre interlocutrice</h2>
+        <p class="section-lead">Pour toute question relative à cette formation, n'hésitez pas à me contacter.</p>
+
+        <div class="card contact-card">
+          <div class="contact-avatar" aria-hidden="true">N</div>
+          <div class="contact-info">
+            <h3>Nadège CORDENTE</h3>
+            <p class="contact-role">Psychologue du travail &amp; Formatrice — PsyCyaNe</p>
+            <div class="contact-links">
+              <a href="mailto:psycyane@gmail.com" class="contact-link" aria-label="Envoyer un email à Nadège CORDENTE">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                psycyane@gmail.com
+              </a>
+              <a href="tel:+33682076378" class="contact-link" aria-label="Appeler Nadège CORDENTE">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.4 2 2 0 0 1 3.58 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.72a16 16 0 0 0 6.38 6.38l.88-.88a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                06 82 07 63 78
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════ -->
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">Psy<span>CyaNe</span></div>
+
+        <div class="footer-links">
+
+          <a href="https://psycyane.fr/inclusion-accessibilite/"
+             target="_blank"
+             rel="noopener noreferrer"
+             aria-label="Politique d'inclusion et de gestion du handicap – PsyCyaNe (ouvre dans un nouvel onglet)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="8" r="1.5" fill="currentColor"/><line x1="12" y1="11" x2="12" y2="17"/></svg>
+            Inclusion &amp; Handicap
+          </a>
+
+          <a href="mailto:psycyane@gmail.com" aria-label="Contacter PsyCyaNe par email">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            psycyane@gmail.com
+          </a>
+        </div>
+      </div>
+
+      <p class="footer-copy">
+        © 2026 PsyCyaNe — Nadège CORDENTE · Psychologue du travail &amp; Formatrice ·
+        <a href="https://psycyane.fr/inclusion-accessibilite/" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,.5);">Politique d'inclusion</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════════════════
+       JAVASCRIPT — Accordéon accessible
+  ═══════════════════════════════════════════════════ -->
+  <script>
+    function toggleAccordeon(btn) {
+      const item = btn.closest('.accordeon-item');
+      const isOpen = item.classList.contains('open');
+
+      // Fermer tous
+      document.querySelectorAll('.accordeon-item.open').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.accordeon-btn').setAttribute('aria-expanded', 'false');
+      });
+
+      // Ouvrir si était fermé
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    // Ouvrir le premier module par défaut
+    document.addEventListener('DOMContentLoaded', () => {
+      const first = document.querySelector('.accordeon-item');
+      if (first) {
+        first.classList.add('open');
+        first.querySelector('.accordeon-btn').setAttribute('aria-expanded', 'true');
+      }
+    });
+  </script>
+
+</body>
+</html>
